@@ -27,4 +27,6 @@ CMD ["ufw", "allow", "'Nginx FULL'"]
 
 COPY ./src /opt/source-code
 
+EXPOSE 80
+
 CMD ["/etc/init.d/nginx", "restart"]
