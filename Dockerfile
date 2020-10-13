@@ -1,14 +1,13 @@
 FROM ubuntu
 
 RUN apt-get update
-RUN apt-get install -y nginx
 RUN apt-get install -y systemd
+RUN apt-get install -y nginx
 
 CMD ["ufw", "allow 'Nginx HTTP'"]
 
 CMD ["systemctl", "status nginx"]
 
-RUN apt-get update
 RUN apt-get -y install python3-pip python3-dev build-essential libssl-dev libffi-dev python3-setuptools
 
 RUN pip3 install wheel
