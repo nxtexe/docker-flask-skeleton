@@ -5,8 +5,6 @@ RUN apt-get install -y nginx
 
 CMD ["ufw", "allow", "'Nginx HTTP'"]
 
-CMD ["/etc/init.d/nginx", "status"]
-
 RUN apt-get -y install python3-pip python3-dev build-essential libssl-dev libffi-dev python3-setuptools
 
 RUN pip3 install wheel
@@ -29,4 +27,4 @@ COPY ./src /opt/source-code
 
 EXPOSE 80
 
-CMD ["/etc/init.d/nginx", "restart"]
+CMD ["/etc/init.d/nginx", "start"]
