@@ -1,12 +1,11 @@
 FROM ubuntu
 
 RUN apt-get update
-RUN apt-get install -y systemd
 RUN apt-get install -y nginx
 
 CMD ["ufw", "allow", "'Nginx HTTP'"]
 
-CMD ["/usr/local/nginx", "status"]
+CMD ["nginx", "status"]
 
 RUN apt-get -y install python3-pip python3-dev build-essential libssl-dev libffi-dev python3-setuptools
 
@@ -18,7 +17,7 @@ COPY ./app.service /etc/systemd/system
 # CMD ["systemctl", "start", "/etc/systemd/system/app.service"]
 # CMD ["systemctl", "enable", "/etc/systemd/system/app.service"]
 # CMD ["systemctl", "status", "/etc/systemd/system/app.service"]
-CMD ["/usr/local/bin/gunicorn", "--workers", "3", "--bind", "unix:myproject.sock", "-m", "007", "wsgi:app"]
+CMD ["gunicorn", "--workers", "3", "--bind", "unix:myproject.sock", "-m", "007", "wsgi:app"]
 
 COPY ./app /etc/nginx/sites-available
 
@@ -28,4 +27,4 @@ CMD ["ufw", "allow", "'Nginx FULL'"]
 
 COPY ./src /opt/source-code
 
-CMD ["/usr/local/nginx", "restart"]
+CMD ["nginx", "restart"]
