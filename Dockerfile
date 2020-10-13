@@ -15,7 +15,6 @@ COPY ./app.service /etc/systemd/system
 # CMD ["systemctl", "start", "/etc/systemd/system/app.service"]
 # CMD ["systemctl", "enable", "/etc/systemd/system/app.service"]
 # CMD ["systemctl", "status", "/etc/systemd/system/app.service"]
-CMD ["gunicorn", "--workers", "3", "--bind", "unix:myproject.sock", "-m", "007", "wsgi:app"]
 
 COPY ./app /etc/nginx/sites-available
 
@@ -28,3 +27,4 @@ COPY ./src /opt/source-code
 EXPOSE 80
 
 CMD ["/etc/init.d/nginx", "start"]
+CMD ["gunicorn", "--workers", "3", "--bind", "unix:myproject.sock", "-m", "007", "wsgi:app"]
