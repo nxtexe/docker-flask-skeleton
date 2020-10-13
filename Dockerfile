@@ -2,7 +2,7 @@ FROM ubuntu
 
 RUN apt-get update
 RUN apt-get install -y nginx
-RUN apt-get install -y /usr/bin/systemctl
+RUN apt-get install -y systemd
 
 CMD ["ufw", "allow 'Nginx HTTP'"]
 
