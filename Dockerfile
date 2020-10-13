@@ -6,7 +6,7 @@ RUN apt-get install -y nginx
 
 CMD ["ufw", "allow", "'Nginx HTTP'"]
 
-CMD ["systemctl", "status", "nginx"]
+CMD ["systemctl", "status", "usr/local/nginx"]
 
 RUN apt-get -y install python3-pip python3-dev build-essential libssl-dev libffi-dev python3-setuptools
 
