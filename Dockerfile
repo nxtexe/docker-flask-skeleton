@@ -15,13 +15,13 @@ RUN pip3 install gunicorn flask
 
 COPY ./app.service /etc/systemd/system
 
-CMD ["systemctl", "start", "app"]
-CMD ["systemctl", "enable", "app"]
-CMD ["systemctl", "status", "app"]
+CMD ["systemctl", "start", "/etc/systemd/system/app.service"]
+CMD ["systemctl", "enable", "/etc/systemd/system/app.service"]
+CMD ["systemctl", "status", "/etc/systemd/system/app.service"]
 
 COPY ./app /etc/nginx/sites-available
 
-CMD ["ln", "-s /etc/nginx/sites-available/app /etc/nginx/sites-enabled"]
+CMD ["ln", "-s", "/etc/nginx/sites-available/app", "/etc/nginx/sites-enabled"]
 
 CMD ["ufw", "allow", "'Nginx FULL'"]
 
