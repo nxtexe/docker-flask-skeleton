@@ -27,4 +27,4 @@ COPY ./src /opt/source-code
 EXPOSE 80
 
 CMD ["/etc/init.d/nginx", "start"]
-CMD ["gunicorn", "--workers", "3", "--bind", "unix:app.sock", "-m", "007", "opt.source-code.app"]
+CMD ["gunicorn", "--workers", "3", "--bind", "unix:app.sock", "-m", "007", "opt.source-code.app:app"]
