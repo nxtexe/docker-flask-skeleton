@@ -1,10 +1,5 @@
-FROM ubuntu
+FROM python:latest
 
-RUN apt-get update
-
-RUN apt-get -y install python3-pip python3-dev build-essential libssl-dev libffi-dev python3-setuptools
-
-RUN pip3 install wheel
 RUN pip3 install gunicorn flask
 
 COPY ./src /opt/source-code
